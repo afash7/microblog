@@ -1,7 +1,19 @@
-from app import app 
+from flask import render_template
+from app import app
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return "micro blog Flask App"
+    user = {'username': 'Afash'}
+    posts = [
+        {
+            'author': {'username': 'Sadegh'},
+            'body': 'Beautiful day in Narmak!'
+        },
+        {
+            'author': {'username': 'Ahoora'},
+            'body': 'im gay!'
+        }
+    ]
+    return render_template('index.html', title='home', user=user, posts=posts)
